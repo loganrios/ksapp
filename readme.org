@@ -2,14 +2,15 @@
 
 This is the ever-evolving app template for Keionsoft Consulting's app development efforts. Heavily in alpha, so expect constant updates and breaking changes--however, this template merges a couple important things that would be a real pain to reinstall.
 
-* Justification
+What is this? It's a React Native starter app with ClojureScript bootstrapped into it via Krell and the ability to create components in Storybook. It's essentially the Vouch stack, as discussed by David Nolen in his talk "ClojureScript in the Age of TypeScript": https://www.youtube.com/watch?v=3HxVMGaiZbc.
+
 Literally why would anybody do something so complicated?
 + React Native lets me write code for iOS, Android, and a scuffed web deployment at the same time
 + ClojureScript is more powerful, more terse, and less syntactically stupid than JS
-+ Krell is an easy dependency to have, and interactive REPL-based programming is literally the best thing ever
-+ Storybook helps with keeping business logic out of views, and lets us test our UIs with dummy data before they ever reach the target device
++ Krell is an easy dependency, and interactive REPL-based programming is literally the best thing ever
++ Storybook helps with keeping business logic out of "Views", and lets us test our UIs with dummy data before they ever reach the target device
 
-Also, this is (purportedly) the stack that David Nolen and the Vouch team are using, and they are much smarter than I am, so...
+*Note*: get ready for long compile and bundle times.
 
 * Prerequisites
 You will need:
@@ -19,9 +20,9 @@ You will need:
 + Clojure (latest version)
 + ClojureScript (I do not remember how to get this)
 + XCode and an iOS Simulator installation
-+ Probably some other things that I don't recall
++ Doom Emacs (with =javascript= and =clojure= modules enabled)
 
-Optionally, I recommend using Doom Emacs, as that is the editor I use, and I will only test it with that.
+This project file could probably be adapted to use some other tooling, but this is my in-house stack, so at the moment it's all I plan on supporting.
 
 * Installation
 Yes, this is a nightmare. Maybe someday I will write a script that does all of this automatically, but honestly Node projects are such a black box that you'll probably have to nuke your generated directories and run these same commands in some arbitrary fashion at least 2-4 times. YMMV.
@@ -94,3 +95,29 @@ Then, run ~yarn storybook~ and witness the glory. If it doesn't work, ~rm -rf no
 
 * Usage
 To be totally honest, I'm not 100% sure this thing even works, but this is where we're at. I haven't tested the ~js/require~ functionality at all, and I have no clue how nicely the JS components and CLJS are going to play in the long run. But hey, we got this far, right?
+
+As a daily driver, you'll basically follow these three steps:
+1. Open up a dedicated terminal and run ~npx react-native start~
+2. Create another terminal and run ~npx react-native run-ios~
+3. In Emacs, navigate to some Clojure-like file (=.edn=, =.cljs=, etc.)
+4. From that Clojure file, run ~M-x cider-jack-in-cljs~ (or ~SPC m "~ if you're a cool Doomacs user), choose option "krell", and wait until the =cljs.user=>= prompt appears (*not* just =user=>=!), then do interactive coding to your heart's content.
+
+* Roadmap
+Things that I will probably eventually do (someday):
+- [ ] Bash or Babashka script to automate all this setup
+- [ ] Possibly get Expo's insanely nice tooling in here (QR codes on the iPhone, whaaaat?)
+- [ ] Integrate other useful CLJS libraries (re-frame, polylith?)
+- [ ] Integrate Fastlane for ease of deployment (we have a Ruby dependency already ig)
+- [ ] Integrate good default RN libraries that help the app development use case
+- [ ] Get boilerplate for a GraphQL or REST backend loaded
+- [ ] Steal Fulcro's ideas
+
+* Acknowledgements
+Most of this template is just a compilation from various sources, all of whom deserve more credit than I do for their genius. Credit where credit is due--I couldn't have made my dream stack work without help from all these folks:
++ Vouch.io (both Krell and the example projects)
++ Storybook team (for SB itself and the clutch React-Native-Web addon)
++ David Nolen (@swannodette) for tons of useful answers in the Clojurians \#cljsrn channel
++ PEZ (@pez) for also having useful CLJS templates that are easier to use than mine
++ Henrik Lissner (@hlissner) for making Doom Emacs, the best text editor of all time
+
+Let's keep the Simple Made Easy dream alive, everyone!
