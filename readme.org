@@ -18,7 +18,7 @@ You will need:
 + NodeJS (only tested with v16)
 + ~yarn~ package manager
 + Clojure (latest version)
-+ ClojureScript (I do not remember how to get this)
++ ClojureScript (note: added to =deps.edn= to avoid the global install)
 + XCode and an iOS Simulator installation
 + Doom Emacs (with =javascript= and =clojure= modules enabled)
 
@@ -36,9 +36,7 @@ yarn install
 clj -M -m cljs.main -co "{:deps-cmd \"yarn\"}" --install-deps
 
 # Go into the ios/ directory and install the pods
-cd ios
-pod install
-cd ..
+cd ios; pod install; cd ..
 
 # Then, build the project.
 clj -M -m krell.main -v -co build.edn -c
@@ -84,7 +82,7 @@ yarn add react@latest
 yarn add react-dom react-native-web babel-plugin-react-native-web @storybook/addon-react-native-web --dev
 #+end_src
 
-Then, you'll want to modify your =.storybook/main.js= file to the following:
+Verify that your =.storybook/main.js= file has the following addon:
 #+begin_src js
 module.exports = {
   addons: [/*existing addons,*/ '@storybook/addon-react-native-web'],
