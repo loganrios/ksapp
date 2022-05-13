@@ -113,6 +113,9 @@ Things that I will probably eventually do (someday):
 - [ ] Get boilerplate for a GraphQL or REST backend loaded
 - [ ] Steal Fulcro's ideas
 
+* Contributing
+Any and all Pull Requests and Issues are welcome--I want this template to be as robust and useful as possible for both my own company and fellow =#cljsrn= devotees.
+
 * Acknowledgements
 Most of this template is just a compilation from various sources, all of whom deserve more credit than I do for their genius. Credit where credit is due--I couldn't have made my dream stack work without help from all these folks:
 + Vouch.io (both Krell and the example projects)
