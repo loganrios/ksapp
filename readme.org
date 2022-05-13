@@ -67,7 +67,30 @@ This should open up a CLJS REPL that is connected to your running iPhone simulat
 cljs.user=> (js/alert "hello whirled!")
 #+end_src
 
-If all goes well, you should see an alert pop up on the iPhone simulator matching your inputted text. Feel free to kill everything, then run a lil' ~yarn storybook~ in that directory as well, just to confirm that you have Storybook available as well.
+If all goes well, you should see an alert pop up on the iPhone simulator matching your inputted text. Feel free to kill everything at this point.
+
+** Storybook Configuration
+So, Storybook doesn't work out of the box (shocker in the JS world). Get ready for more package management screwery.
+
+*Note*: you want to do this /after/ you confirm the Krell portion of the build--for some reason, it likes to overwrite the version of React. You want the latest for Storybook, otherwise you'll get a blank screen and zero explanation.
+
+#+begin_src bash
+# Upgrade to the latest React (it works with Krell anyway ig)
+yarn add react@latest
+
+# Then, add a whole bunch of dependencies to make
+# Storybook understand React-Native stuff in web mode.
+yarn add react-dom react-native-web babel-plugin-react-native-web @storybook/addon-react-native-web --dev
+#+end_src
+
+Then, you'll want to modify your =.storybook/main.js= file to the following:
+#+begin_src js
+module.exports = {
+  addons: [/*existing addons,*/ '@storybook/addon-react-native-web'],
+};
+#+end_src
+
+Then, run ~yarn storybook~ and witness the glory. If it doesn't work, ~rm -rf node_modules; yarn install~ and try ~yarn storybook~ again.
 
 * Usage
 To be totally honest, I'm not 100% sure this thing even works, but this is where we're at. I haven't tested the ~js/require~ functionality at all, and I have no clue how nicely the JS components and CLJS are going to play in the long run. But hey, we got this far, right?
