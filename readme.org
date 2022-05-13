@@ -105,6 +105,7 @@ As a daily driver, you'll basically follow these three steps:
 * Roadmap
 Things that I will probably eventually do (someday):
 - [ ] Bash or Babashka script to automate all this setup
+- [ ] =react-native-web= support, a la Expo
 - [ ] Possibly get Expo's insanely nice tooling in here (QR codes on the iPhone, whaaaat?)
 - [ ] Integrate other useful CLJS libraries (re-frame, polylith?)
 - [ ] Integrate Fastlane for ease of deployment (we have a Ruby dependency already ig)
